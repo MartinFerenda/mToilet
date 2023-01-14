@@ -1,5 +1,6 @@
 package com.example.webservice
 
+import android.util.Log
 import android.widget.EditText
 import com.example.core.entities.User
 import com.example.webservice.responses.UsersResponse
@@ -12,8 +13,9 @@ import retrofit2.Response
 
 
 class mToiletWebServiceAPICaller {
-    lateinit var retrofit : Retrofit
+    var retrofit : Retrofit
     var allUsers: MutableList<User> = mutableListOf()
+    var found: Boolean = false
     val baseUrl : String = "https://air2221.mobilisis.hr/api/"
 
     init {
@@ -41,20 +43,17 @@ class mToiletWebServiceAPICaller {
 
     fun getAllUsers(){
         val serviceAPI = retrofit.create(mToiletWebServiceAPI::class.java)
-        val call: Call<UsersResponse> = serviceAPI.getAllUsers()
+        val call: Call<MutableList<User>> = serviceAPI.getAllUsers()
 
-        call.enqueue(object : Callback<UsersResponse>{
-            override fun onResponse(call: Call<UsersResponse>, response: Response<UsersResponse>) {
+        call.enqueue(object : Callback<MutableList<User>>{
+            override fun onResponse(call: Call<MutableList<User>>, response: Response<MutableList<User>>) {
                 if (response.isSuccessful) {
-                    val usersResponse = response.body()!!
-                    for (u in usersResponse.usersArr){
-                        var user: User = User(u.id, u.username, u.password, u.gender)
-                        allUsers.add(user)
-                    }
+                    val usersResponse = response.body()!!.toMutableList()
+                    this@mToiletWebServiceAPICaller.allUsers = usersResponse
                 }
             }
 
-            override fun onFailure(call: Call<UsersResponse>, t: Throwable) {
+            override fun onFailure(call: Call<MutableList<User>>, t: Throwable) {
 
             }
         })

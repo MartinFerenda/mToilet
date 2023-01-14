@@ -25,7 +25,8 @@
         android:textColor="@color/black"
         android:textStyle="bold"
         android:textSize="25dp"
-        android:layout_marginTop="180dp"
+        android:layout_below="@+id/register"
+        android:layout_marginTop="10dp"
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
         android:layout_marginBottom="10dp"
@@ -47,20 +48,8 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/email"
-        android:layout_below="@id/username"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
-        android:hint="E-mail address"
-        android:gravity="center"
-        android:padding="15dp"/>
-
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:id="@+id/password"
-        android:layout_below="@id/email"
+        android:layout_below="@id/username"
         android:layout_marginTop="10dp"
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
@@ -80,11 +69,40 @@
         android:gravity="center"
         android:padding="15dp"/>
 
-    <com.google.android.material.button.MaterialButton
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/gender_radio_group"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/confirmPassword"
+        >
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/gender_radio_group_heading"
+            android:text="Gender:"
+            android:textSize="20dp"
+            android:gravity="center"/>
+        <RadioButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/radio_male"
+            android:text="Male" />
+        <RadioButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/radio_female"
+            android:text="Female" />
+
+    </RadioGroup>
+
+    <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/createMyAccount"
-        android:layout_below="@id/confirmPassword"
+        android:layout_below="@id/gender_radio_group"
         android:layout_marginTop="30dp"
         android:layout_marginLeft="40dp"
         android:layout_marginRight="40dp"
@@ -95,7 +113,7 @@
         android:layout_height="wrap_content"
         android:text="I already have an account"
         android:layout_below="@id/createMyAccount"
-        android:layout_marginTop="90dp"
+        android:layout_marginTop="30dp"
         android:layout_marginLeft="80dp"
         android:layout_marginRight="80dp"
         android:gravity="center"/>

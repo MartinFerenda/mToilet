@@ -13,5 +13,5 @@ interface mToiletWebServiceAPI {
     fun postNewUser(@Body user: User?) : Call<User?>?
 
     @GET("users")
-    fun getAllUsers() : Call<UsersResponse>
+    fun getAllUsers() : Call<MutableList<User>>
 }
