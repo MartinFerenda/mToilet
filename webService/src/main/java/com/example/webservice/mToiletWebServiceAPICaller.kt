@@ -1,9 +1,6 @@
 package com.example.webservice
 
-import android.util.Log
-import android.widget.EditText
 import com.example.core.entities.User
-import com.example.webservice.responses.UsersResponse
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -13,10 +10,9 @@ import retrofit2.Response
 
 
 class mToiletWebServiceAPICaller {
-    var retrofit : Retrofit
-    var allUsers: MutableList<User> = mutableListOf()
-    var found: Boolean = false
-    val baseUrl : String = "https://air2221.mobilisis.hr/api/"
+    private var retrofit : Retrofit
+    lateinit var allUsers: List<User>
+    private val baseUrl : String = "https://air2221.mobilisis.hr/api/"
 
     init {
         retrofit = Retrofit.Builder()
@@ -32,7 +28,7 @@ class mToiletWebServiceAPICaller {
 
         call!!.enqueue(object : Callback<User?>{
              override fun onResponse(call: Call<User?>, response: Response<User?>) {
-                val response: User? = response.body()
+                val responseUser: User? = response.body()
             }
 
             override fun onFailure(call: Call<User?>, t: Throwable) {
@@ -41,21 +37,25 @@ class mToiletWebServiceAPICaller {
         })
     }
 
-    fun getAllUsers(){
+    fun getAllUsers() {
         val serviceAPI = retrofit.create(mToiletWebServiceAPI::class.java)
-        val call: Call<MutableList<User>> = serviceAPI.getAllUsers()
+        val call : Call<List<User>?>? = serviceAPI.getAllUsers()
+        var usersResponse: List<User>? = listOf()
 
-        call.enqueue(object : Callback<MutableList<User>>{
-            override fun onResponse(call: Call<MutableList<User>>, response: Response<MutableList<User>>) {
+        var ide: Boolean = true
+
+        call!!.enqueue(object : Callback<List<User>?> {
+            override fun onResponse(call: Call<List<User>?>, response: Response<List<User>?>) {
+                ide = false
                 if (response.isSuccessful) {
-                    val usersResponse = response.body()!!.toMutableList()
-                    this@mToiletWebServiceAPICaller.allUsers = usersResponse
+                    usersResponse = response.body()
                 }
             }
-
-            override fun onFailure(call: Call<MutableList<User>>, t: Throwable) {
-
+            override fun onFailure(call: Call<List<User>?>, t: Throwable) {
+                ide = false
             }
         })
+        this.allUsers = listOf()
+        this.allUsers = usersResponse!!
     }
 }

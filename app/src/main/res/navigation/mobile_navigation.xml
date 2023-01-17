@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_home">
+
+    <activity
+        android:id="@+id/nav_my_profile"
+        android:name="com.example.mtoilet.MyProfile"
+        android:label="@string/menu_my_profile"
+        tools:layout="@layout/activity_my_profile" />
+
+    <activity
+        android:id="@+id/nav_reset_password"
+        android:name="com.example.mtoilet.ResetPassword"
+        android:label="@string/menu_reset_password"
+        tools:layout="@layout/activity_reset_password" />
+
+    <activity
+        android:id="@+id/nav_logout"
+        android:name="com.example.mtoilet.Login"
+        android:label="@string/menu_logout"
+        tools:layout="@layout/activity_login" />
+</navigation>
