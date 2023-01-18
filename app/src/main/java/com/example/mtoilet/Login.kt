@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import com.example.core.entities.LoggedUser
+import com.example.core.entities.User
 import com.example.webservice.mToiletWebServiceAPICaller
 
 class Login : AppCompatActivity() {
@@ -25,7 +26,12 @@ class Login : AppCompatActivity() {
 
             val caller = mToiletWebServiceAPICaller()
             caller.getAllUsers()
-            for (u in caller.allUsers){
+
+            var listUsers : MutableList<User> = mutableListOf()
+            listUsers.add(User(21, "novi", "nova", "Male"))
+            listUsers.add(User(23, "novi2", "nova2", "Male"))
+
+            for (u in listUsers){
                 if(u.username == username.text.toString() && u.password == password.text.toString()){
 
                     LoggedUser.id = u.id
@@ -33,7 +39,7 @@ class Login : AppCompatActivity() {
                     LoggedUser.password = u.password
                     LoggedUser.gender = u.gender
 
-                    val intent = Intent(this, Home::class.java)
+                    val intent = Intent(this, Home2::class.java)
                     startActivity(intent)
                 }
             }

@@ -30,19 +30,27 @@
         android:gravity="center"/>
 
     <Button
+        android:id="@+id/ok_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/ok_button"
-        android:text="@string/ok_button_welcome"
-        android:layout_below="@+id/show_around"
-        android:layout_margin="50dp"/>
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginBottom="220dp"
+        android:background="@drawable/round_style"
+        android:text="@string/ok_button_welcome" />
 
     <Button
+        android:id="@+id/skip_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/skip_button"
-        android:text="@string/skip_button_welcome"
-        android:layout_below="@+id/ok_button"
-        android:layout_margin="50dp"/>
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginBottom="120dp"
+        android:background="@drawable/round_style"
+        android:text="@string/skip_button_welcome" />
 
 </RelativeLayout>

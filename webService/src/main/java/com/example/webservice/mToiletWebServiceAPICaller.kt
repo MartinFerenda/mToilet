@@ -57,7 +57,6 @@ class mToiletWebServiceAPICaller {
             }
 
         })
-        //this.allUsers = listOf()
-        //this.allUsers = usersResponse!!
+        this.allUsers = listOf()
     }
 }

@@ -59,5 +59,7 @@
     <string name="welcome_main_text">First, let us quickly show you around</string>
     <string name="ok_button_welcome">OK</string>
     <string name="skip_button_welcome">Skip</string>
+    <string name="pay_qr_code_scan">Pay</string>
+    <string name="qr_code_scan_heading">QR code scan</string>
 
 </resources>

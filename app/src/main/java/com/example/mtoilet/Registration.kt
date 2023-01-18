@@ -36,7 +36,7 @@ class Registration : AppCompatActivity() {
                 val newUser = User(1, userName.text.toString(), password.text.toString(), gender)
                 mToiletWebServiceAPICaller.postNewUser(newUser)
 
-                val intent = Intent(this, Home::class.java)
+                val intent = Intent(this, Home2::class.java)
                 startActivity(intent)
             }
         }

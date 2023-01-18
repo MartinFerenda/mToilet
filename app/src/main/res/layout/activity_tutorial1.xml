@@ -18,26 +18,29 @@
         android:gravity="center"/>
 
     <TextView
+        android:id="@+id/descriptionTutorial1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/descriptionTutorial1"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="300dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginBottom="220dp"
+        android:gravity="center"
         android:text="@string/tutorial1_main_text"
         android:textColor="@color/black"
-        android:textSize="25sp"
-        android:gravity="center"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
-        android:layout_marginTop="300dp"
-        android:layout_below="@id/headerTutorial1"/>
+        android:textSize="25sp" />
 
-    <com.google.android.material.button.MaterialButton
+    <Button
+        android:id="@+id/nextTutorial1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/nextTutorial1"
-        android:text="@string/next_button_tutorial1"
-        android:layout_below="@id/descriptionTutorial1"
-        android:layout_marginTop="50dp"
+        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginStart="300dp"/>
+        android:layout_marginStart="300dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="120dp"
+        android:background="@drawable/round_style"
+        android:text="@string/next_button_tutorial1" />
 
 </RelativeLayout>

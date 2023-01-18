@@ -60,12 +60,25 @@
         android:padding="15dp"/>
 
     <Button
+        android:background="@drawable/round_style"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/login_button"
         android:layout_below="@+id/password"
         android:layout_margin="50dp"
+        android:radius="50dp"
         android:text="@string/log_in_button"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/login_message"
+        android:text=""
+        android:layout_below="@id/login_button"
+        android:gravity="center"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"/>
+
 
     <TextView
         android:layout_width="match_parent"
