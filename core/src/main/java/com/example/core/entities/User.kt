@@ -1,8 +1,8 @@
 package com.example.core.entities
 
-open class User (
-    open var id: Int? = null,
+data class User (
+    var id: Int,
     var username: String,
     var password: String,
     var gender: String
-        )
+    )

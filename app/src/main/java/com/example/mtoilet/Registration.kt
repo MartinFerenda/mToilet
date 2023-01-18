@@ -33,7 +33,7 @@ class Registration : AppCompatActivity() {
             if(checkedButtonId != -1 && checkPasswords() && checkUsername()){
                 val choice: RadioButton = findViewById(checkedButtonId)
                 gender = choice.text.toString()
-                val newUser = User(null, userName.text.toString(), password.text.toString(), gender)
+                val newUser = User(1, userName.text.toString(), password.text.toString(), gender)
                 mToiletWebServiceAPICaller.postNewUser(newUser)
 
                 val intent = Intent(this, Home::class.java)

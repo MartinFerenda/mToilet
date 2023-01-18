@@ -5,7 +5,6 @@ import com.example.webservice.responses.UsersResponse
 import retrofit2.http.Body
 import retrofit2.http.POST
 import retrofit2.Call
-import retrofit2.Response
 import retrofit2.http.GET
 
 
@@ -14,5 +13,5 @@ interface mToiletWebServiceAPI {
     fun postNewUser(@Body user: User?) : Call<User?>?
 
     @GET("users")
-    fun getAllUsers() : Call<List<User>?>
+    fun getAllUsers() : Call<List<User>>
 }

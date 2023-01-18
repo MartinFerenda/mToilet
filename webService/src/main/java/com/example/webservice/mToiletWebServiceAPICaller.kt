@@ -1,7 +1,7 @@
 package com.example.webservice
 
 import com.example.core.entities.User
-import okhttp3.OkHttpClient
+import com.example.webservice.responses.UsersResponse
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.Call
@@ -18,7 +18,6 @@ class mToiletWebServiceAPICaller {
         retrofit = Retrofit.Builder()
             .baseUrl(baseUrl)
             .addConverterFactory(GsonConverterFactory.create())
-            .client(OkHttpClient())
             .build()
     }
 
@@ -38,24 +37,27 @@ class mToiletWebServiceAPICaller {
     }
 
     fun getAllUsers() {
-        val serviceAPI = retrofit.create(mToiletWebServiceAPI::class.java)
-        val call : Call<List<User>?>? = serviceAPI.getAllUsers()
-        var usersResponse: List<User>? = listOf()
+        val retrofit2 = Retrofit.Builder()
+            .baseUrl(baseUrl)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
 
-        var ide: Boolean = true
+        val serviceAPI = retrofit2.create(mToiletWebServiceAPI::class.java)
+        val call : Call<List<User>> = serviceAPI.getAllUsers()
 
-        call!!.enqueue(object : Callback<List<User>?> {
-            override fun onResponse(call: Call<List<User>?>, response: Response<List<User>?>) {
-                ide = false
-                if (response.isSuccessful) {
-                    usersResponse = response.body()
+        call.enqueue(object : Callback<List<User>> {
+            override fun onResponse(call: Call<List<User>>, response: Response<List<User>>) {
+                if (response.isSuccessful){
+                    val usersResponse = response.body()!!
                 }
             }
-            override fun onFailure(call: Call<List<User>?>, t: Throwable) {
-                ide = false
+
+            override fun onFailure(call: Call<List<User>>, t: Throwable) {
+                val ide = false
             }
+
         })
-        this.allUsers = listOf()
-        this.allUsers = usersResponse!!
+        //this.allUsers = listOf()
+        //this.allUsers = usersResponse!!
     }
 }

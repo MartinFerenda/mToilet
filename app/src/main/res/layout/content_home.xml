@@ -13,16 +13,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:defaultNavHost="true"
-        app:navGraph="@navigation/mobile_navigation"
-        tools:layout_editor_absoluteY="116dp" />
+        app:navGraph="@navigation/mobile_navigation"/>
 
-    <ListView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="@+id/nav_host_fragment_content_home"
-        app:layout_constraintTop_toTopOf="@+id/nav_host_fragment_content_home">
-
-
-
-    </ListView>
 </androidx.constraintlayout.widget.ConstraintLayout>
