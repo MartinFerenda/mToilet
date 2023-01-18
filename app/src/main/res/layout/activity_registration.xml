@@ -10,9 +10,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/register"
-        android:text="Register"
+        android:text="@string/register_heading"
         android:textColor="@color/black"
-        android:textSize="35dp"
+        android:textSize="35sp"
         android:textStyle="bold"
         android:layout_margin="50dp"
         android:gravity="center"/>
@@ -21,10 +21,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/mainText"
-        android:text="Please enter your account details below"
+        android:text="@string/register_main_text"
         android:textColor="@color/black"
         android:textStyle="bold"
-        android:textSize="25dp"
+        android:textSize="25sp"
         android:layout_below="@+id/register"
         android:layout_marginTop="10dp"
         android:layout_marginLeft="30dp"
@@ -37,11 +37,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/username"
+        android:inputType="text"
+        android:importantForAutofill="no"
         android:layout_below="@id/mainText"
         android:layout_marginTop="10dp"
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
-        android:hint="Username"
+        android:hint="@string/username_register"
         android:gravity="center"
         android:padding="15dp"/>
 
@@ -49,11 +51,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/password"
+        android:inputType="textPassword"
+        android:importantForAutofill="no"
         android:layout_below="@id/username"
         android:layout_marginTop="10dp"
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
-        android:hint="Password"
+        android:hint="@string/password_register"
         android:gravity="center"
         android:padding="15dp"/>
 
@@ -61,11 +65,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/confirmPassword"
+        android:inputType="textPassword"
+        android:importantForAutofill="no"
         android:layout_below="@id/password"
         android:layout_marginTop="10dp"
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
-        android:hint="Confirm password"
+        android:hint="@string/confirm_password_register"
         android:gravity="center"
         android:padding="15dp"/>
 
@@ -82,19 +88,19 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/gender_radio_group_heading"
-            android:text="Gender:"
-            android:textSize="20dp"
+            android:text="@string/gender_register"
+            android:textSize="20sp"
             android:gravity="center"/>
         <RadioButton
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/radio_male"
-            android:text="Male" />
+            android:text="@string/male_register" />
         <RadioButton
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/radio_female"
-            android:text="Female" />
+            android:text="@string/female_register" />
 
     </RadioGroup>
 
@@ -106,12 +112,12 @@
         android:layout_marginTop="30dp"
         android:layout_marginLeft="40dp"
         android:layout_marginRight="40dp"
-        android:text="Create my account"/>
+        android:text="@string/create_my_account_button_register"/>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="I already have an account"
+        android:text="@string/i_already_have_an_account_register"
         android:layout_below="@id/createMyAccount"
         android:layout_marginTop="30dp"
         android:layout_marginLeft="80dp"

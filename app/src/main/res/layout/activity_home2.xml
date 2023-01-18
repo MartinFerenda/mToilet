@@ -10,14 +10,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/qr_scan_button"
-        android:text="QR code scan"
+        android:text="@string/qr_code_scan"
         android:layout_margin="50dp"/>
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/transactions_review"
-        android:text="Transactions review"
+        android:text="@string/transactions_review"
         android:layout_below="@+id/qr_scan_button"
         android:layout_margin="50dp"/>
 

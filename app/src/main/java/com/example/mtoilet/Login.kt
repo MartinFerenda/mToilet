@@ -30,6 +30,7 @@ class Login : AppCompatActivity() {
 
                     LoggedUser.id = u.id
                     LoggedUser.username = u.username
+                    LoggedUser.password = u.password
                     LoggedUser.gender = u.gender
 
                     val intent = Intent(this, Home::class.java)
