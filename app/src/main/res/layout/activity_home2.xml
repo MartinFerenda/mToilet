@@ -23,4 +23,13 @@
         android:layout_below="@+id/qr_scan_button"
         android:layout_margin="50dp"/>
 
+    <Button
+        android:background="@drawable/round_style"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/my_prof"
+        android:text="@string/transactions_review"
+        android:layout_below="@+id/transactions_review"
+        android:layout_margin="50dp"/>
+
 </RelativeLayout>

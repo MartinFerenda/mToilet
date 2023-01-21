@@ -9,21 +9,48 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/qr_code_scan"
+        android:id="@+id/qr_code_scan_heading"
         android:text="@string/qr_code_scan_heading"
-        android:textStyle="bold"
         android:textSize="35sp"
         android:textColor="@color/black"
+        android:textStyle="bold"
         android:gravity="center"
-        android:layout_margin="50dp"/>
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginTop="50dp"/>
+
+    <com.budiyev.android.codescanner.CodeScannerView
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:id="@+id/scanner_view"
+        app:autoFocusButtonColor="@android:color/white"
+        app:autoFocusButtonVisible="true"
+        app:flashButtonColor="@android:color/white"
+        app:flashButtonVisible="true"
+        android:layout_marginEnd="50dp"
+        android:layout_marginStart="50dp"
+        android:layout_below="@id/qr_code_scan_heading"
+        android:layout_marginTop="50dp"
+        app:maskColor="#6C000000"/>
+
+    <TextView
+        android:id="@+id/tv_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/scanner_view"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="20dp"
+        android:text="Scan code..."
+        android:textColor="@android:color/black"/>
 
     <Button
         android:background="@drawable/round_style"
-        android:layout_width="match_parent"
+        android:id="@+id/btn_pay"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/pay_button"
-        android:text="@string/pay_qr_code_scan"
-        android:layout_margin="50dp"
-        android:layout_below="@+id/qr_code_scan"/>
+        android:layout_below="@+id/tv_textView"
+        android:layout_centerHorizontal="true"
+        android:onClick="getPayment"
+        android:text="Pay" />
 
 </RelativeLayout>

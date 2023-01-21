@@ -14,6 +14,12 @@ class Home2 : AppCompatActivity() {
         loginButton.setOnClickListener {
             val intent = Intent(this, QRCodeScan::class.java)
             startActivity(intent)
+
+            val myProfButton = findViewById<Button>(R.id.my_prof)
+            myProfButton.setOnClickListener {
+                val intent2 = Intent(this, MyProfile::class.java)
+                startActivity(intent2)
+            }
         }
     }
 }

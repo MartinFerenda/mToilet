@@ -16,6 +16,7 @@ class Registration : AppCompatActivity() {
     private lateinit var password: EditText
     private lateinit var gender: String
     private lateinit var btnRegister: Button
+    private lateinit var btnAlreadyHaveAccount : Button
     private lateinit var radioGroup: RadioGroup
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,6 +26,7 @@ class Registration : AppCompatActivity() {
         userName = findViewById(R.id.username)
         password = findViewById(R.id.password)
         btnRegister = findViewById(R.id.createMyAccount)
+        btnAlreadyHaveAccount = findViewById(R.id.i_have_account)
         radioGroup = findViewById(R.id.gender_radio_group)
 
         btnRegister.setOnClickListener {
@@ -39,6 +41,12 @@ class Registration : AppCompatActivity() {
                 val intent = Intent(this, Home2::class.java)
                 startActivity(intent)
             }
+
+
+        }
+        btnAlreadyHaveAccount.setOnClickListener{
+            val intent2 = Intent(this, Login::class.java)
+            startActivity(intent2)
         }
     }
     private fun checkPasswords() : Boolean{
@@ -50,11 +58,14 @@ class Registration : AppCompatActivity() {
         val username: EditText = findViewById(R.id.username)
         val caller = mToiletWebServiceAPICaller()
         caller.getAllUsers()
+
         for (u in caller.allUsers){
             if(u.username == username.text.toString()){
                 return false
             }
         }
+
+         
         return true
     }
 }

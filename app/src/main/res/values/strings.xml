@@ -61,5 +61,6 @@
     <string name="skip_button_welcome">Skip</string>
     <string name="pay_qr_code_scan">Pay</string>
     <string name="qr_code_scan_heading">QR code scan</string>
+    <string name="i_already_have_an_account_button">I already have an account</string>
 
 </resources>
