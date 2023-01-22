@@ -8,7 +8,7 @@ import android.widget.EditText
 import android.widget.TextView
 import com.example.core.entities.LoggedUser
 import com.example.core.entities.User
-import com.example.webservice.mToiletWebServiceAPICaller
+import com.example.repository.Repository
 
 class Login : AppCompatActivity() {
 
@@ -25,31 +25,37 @@ class Login : AppCompatActivity() {
             //val intent = Intent(this, Home::class.java)
             //startActivity(intent)
 
-            val caller = mToiletWebServiceAPICaller()
-            caller.getAllUsers(username.text.toString())
+            val repository = Repository()
+            repository.getAllUsers(username.text.toString(), this)
+
 
             var found = false
             val message : TextView = findViewById(R.id.login_message)
+
             val listUsers : MutableList<User> = mutableListOf()
             listUsers.add(User(21, "novi", "nova", "Male"))
             listUsers.add(User(23, "novi2", "nova2", "Male"))
 
-            for (u in listUsers){
-                if(u.username == username.text.toString() && u.password == password.text.toString()){
-                    found = true
-                    message.text = ""
+            if (!repository.checkInternetConnection(this)){
+                message.text = "Please check your internet connection!"
+            }else {
+                for (u in listUsers) {
+                    if (u.username == username.text.toString() && u.password == password.text.toString()) {
+                        found = true
+                        message.text = ""
 
-                    LoggedUser.id = u.id
-                    LoggedUser.username = u.username
-                    LoggedUser.password = u.password
-                    LoggedUser.gender = u.gender
+                        LoggedUser.id = u.id
+                        LoggedUser.username = u.username
+                        LoggedUser.password = u.password
+                        LoggedUser.gender = u.gender
 
-                    val intent = Intent(this, Home2::class.java)
-                    startActivity(intent)
+                        val intent = Intent(this, Home2::class.java)
+                        startActivity(intent)
+                    }
                 }
-            }
-            if (!found){
-                message.text = "Wrong username or password!"
+                if (!found){
+                    message.text = "Wrong username or password!"
+                }
             }
         }
     }

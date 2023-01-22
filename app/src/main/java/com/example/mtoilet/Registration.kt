@@ -10,7 +10,7 @@ import android.widget.RadioGroup
 import android.widget.TextView
 import com.example.core.entities.LoggedUser
 import com.example.core.entities.User
-import com.example.webservice.mToiletWebServiceAPICaller
+import com.example.repository.Repository
 
 class Registration : AppCompatActivity() {
 
@@ -38,34 +38,39 @@ class Registration : AppCompatActivity() {
         var message = ""
 
         btnRegister.setOnClickListener {
-            val mToiletWebServiceAPICaller = mToiletWebServiceAPICaller()
+            val repository = Repository()
             val checkedButtonId: Int = radioGroup.checkedRadioButtonId
 
-            if (userName.text.toString() == "" || password.text.toString() == "" ||
-                    confirmPassword.text.toString() == "" || checkedButtonId == -1){
-                message = "All fields are required!"
+            if (!repository.checkInternetConnection(this)){
+                message = "Please check your internet connection!"
                 tVMessage.text = message
             }else{
-                message = checkPasswords()
-                if (message != ""){
+                if (userName.text.toString() == "" || password.text.toString() == "" ||
+                        confirmPassword.text.toString() == "" || checkedButtonId == -1){
+                    message = "All fields are required!"
                     tVMessage.text = message
                 }else{
-                    message = checkUsername()
+                    message = checkPasswords()
                     if (message != ""){
                         tVMessage.text = message
                     }else{
-                        if (password.text.length < 6){
-                            message = "Password must be at least 6 characters long!"
+                        message = checkUsername()
+                        if (message != ""){
                             tVMessage.text = message
-                        }else {
-                            val choice: RadioButton = findViewById(checkedButtonId)
-                            gender = choice.text.toString()
-                            val newUser =
-                                User(1, userName.text.toString(), password.text.toString(), gender)
-                            mToiletWebServiceAPICaller.postNewUser(newUser)
+                        }else{
+                            if (password.text.length < 6){
+                                message = "Password must be at least 6 characters long!"
+                                tVMessage.text = message
+                            }else {
+                                val choice: RadioButton = findViewById(checkedButtonId)
+                                gender = choice.text.toString()
+                                val newUser =
+                                    User(1, userName.text.toString(), password.text.toString(), gender)
+                                repository.postNewUser(newUser)
 
-                            val intent = Intent(this, Home2::class.java)
-                            startActivity(intent)
+                                val intent = Intent(this, Home2::class.java)
+                                startActivity(intent)
+                            }
                         }
                     }
                 }
@@ -84,8 +89,8 @@ class Registration : AppCompatActivity() {
         }
     }
     private fun checkUsername() : String{
-        val caller = mToiletWebServiceAPICaller()
-        caller.getAllUsers(userName.text.toString())
+        val repository = Repository()
+        repository.getAllUsers(userName.text.toString(), this)
 
         if(LoggedUser.foundInDatabase) {
             return "Username is already taken! Please choose different username!"
