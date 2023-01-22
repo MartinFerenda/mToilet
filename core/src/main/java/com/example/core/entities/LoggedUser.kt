@@ -5,4 +5,5 @@ object LoggedUser {
     var username : String = ""
     var password : String = ""
     var gender : String = ""
+    var foundInDatabase : Boolean = false
 }

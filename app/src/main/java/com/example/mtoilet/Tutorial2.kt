@@ -11,16 +11,14 @@ class Tutorial2 : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_tutorial2)
 
-            val nextTutorial2Button = findViewById<Button>(R.id.nextTutorial2)
-            nextTutorial2Button.setOnClickListener {
+        val nextTutorial2Button = findViewById<Button>(R.id.nextTutorial2)
+        val backTutorial2Button = findViewById<Button>(R.id.backTutorial2)
+        nextTutorial2Button.setOnClickListener {
             val intentNext = Intent(this, Tutorial3::class.java)
             startActivity(intentNext)
-
-            val backTutorial2Button = findViewById<Button>(R.id.backTutorial2)
-            backTutorial2Button.setOnClickListener {
-                val intentBack = Intent(this, Tutorial1::class.java)
-                startActivity(intentBack)
-            }
+        }
+        backTutorial2Button.setOnClickListener {
+            this.finish()
         }
     }
 }

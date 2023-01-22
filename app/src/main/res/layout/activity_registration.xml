@@ -77,6 +77,16 @@
         android:gravity="center"
         android:padding="15dp"/>
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/gender_radio_group_heading"
+        android:text="@string/gender_register"
+        android:layout_below="@id/confirmPassword"
+        android:textSize="20sp"
+        android:gravity="center"
+        android:layout_marginTop="10dp"/>
+
     <RadioGroup
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -84,34 +94,44 @@
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
         android:layout_marginTop="10dp"
-        android:layout_below="@+id/confirmPassword"
-        >
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/gender_radio_group_heading"
-            android:text="@string/gender_register"
-            android:textSize="20sp"
-            android:gravity="center"/>
+        android:layout_below="@+id/gender_radio_group_heading"
+        android:orientation="horizontal">
+
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/radio_male"
+            android:width="0dp"
+            android:layout_weight="1"
             android:text="@string/male_register" />
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/radio_female"
+            android:width="0dp"
+            android:layout_weight="1"
             android:text="@string/female_register" />
 
     </RadioGroup>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/register_message"
+        android:text=""
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:textColor="#FF0000"
+        android:gravity="center"
+        android:layout_below="@id/gender_radio_group"
+        android:layout_marginTop="10dp"/>
 
     <Button
         android:background="@drawable/round_style"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/createMyAccount"
-        android:layout_below="@id/gender_radio_group"
+        android:layout_below="@id/register_message"
         android:layout_marginTop="30dp"
         android:layout_marginLeft="40dp"
         android:layout_marginRight="40dp"

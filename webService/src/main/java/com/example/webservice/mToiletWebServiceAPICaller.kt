@@ -1,6 +1,7 @@
 package com.example.webservice
 
 import androidx.core.provider.FontsContractCompat
+import com.example.core.entities.LoggedUser
 import com.example.core.entities.User
 import retrofit2.Call
 import retrofit2.Callback
@@ -34,15 +35,20 @@ class mToiletWebServiceAPICaller {
             }
         })
     }
-    fun getAllUsers(){
+    fun getAllUsers(username : String){
         val serviceAPI = retrofit.create(mToiletWebServiceAPI::class.java)
         val call : Call<List<User>> = serviceAPI.getAllUsers()
         var usersResponse : MutableList<User> = mutableListOf()
         this.allUsers = mutableListOf()
+
+        LoggedUser.foundInDatabase = false
         call.enqueue(object : Callback<List<User>>{
             override fun onResponse(call: Call<List<User>>, response: Response<List<User>>) {
                 if (response.isSuccessful){
                     for (u in response.body()!!){
+                        if (username == u.username){
+                            LoggedUser.foundInDatabase = true
+                        }
                         val fetchedUser = User(u.id, u.username, u.password, u.gender)
                         usersResponse.add(fetchedUser)
                     }
