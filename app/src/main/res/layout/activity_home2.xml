@@ -18,8 +18,8 @@
         android:background="@drawable/round_style"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/transactions_review"
-        android:text="@string/transactions_review"
+        android:id="@+id/my_prof"
+        android:text="@string/my_profile_button"
         android:layout_below="@+id/qr_scan_button"
         android:layout_margin="50dp"/>
 
@@ -27,9 +27,9 @@
         android:background="@drawable/round_style"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/my_prof"
-        android:text="@string/transactions_review"
-        android:layout_below="@+id/transactions_review"
+        android:id="@+id/logout"
+        android:text="@string/logout_button"
+        android:layout_below="@+id/my_prof"
         android:layout_margin="50dp"/>
 
 </RelativeLayout>

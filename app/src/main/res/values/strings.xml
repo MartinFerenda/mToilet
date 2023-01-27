@@ -62,5 +62,7 @@
     <string name="pay_qr_code_scan">Pay</string>
     <string name="qr_code_scan_heading">QR code scan</string>
     <string name="i_already_have_an_account_button">I already have an account</string>
+    <string name="logout_button">Logout</string>
+    <string name="my_profile_button">My profile</string>
 
 </resources>

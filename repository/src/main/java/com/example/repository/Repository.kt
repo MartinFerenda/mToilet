@@ -4,6 +4,7 @@ import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.util.Log
+import com.example.core.entities.LoggedUser
 import com.example.core.entities.User
 import com.example.webservice.mToiletWebServiceAPICaller
 
@@ -12,12 +13,16 @@ class Repository {
     fun getAllUsers(username : String, context: Context){
         if (checkInternetConnection(context)){
             val caller = mToiletWebServiceAPICaller()
-            caller.getAllUsers(username)
+            caller.getAllUsers(context, username)
         }
     }
     fun postNewUser(user : User){
         val mToiletWebServiceAPICaller = mToiletWebServiceAPICaller()
         mToiletWebServiceAPICaller.postNewUser(user)
+    }
+    fun updateUserData(user : User){
+        val mToiletWebServiceAPICaller = mToiletWebServiceAPICaller()
+        mToiletWebServiceAPICaller.updateUserData(LoggedUser.id, user)
     }
     fun checkInternetConnection(context: Context) : Boolean{
         val connectivityManager =
@@ -40,4 +45,18 @@ class Repository {
         }
         return false
     }
+    fun checkUsername() : String{
+        /*
+        val repository = Repository()
+        repository.getAllUsers(userName.text.toString(), this)
+        */
+        //za registraciju i my profile treba!!!
+
+        if(LoggedUser.foundInDatabase) {
+            return "Username is already taken! Please choose different username!"
+        }
+        return ""
+    }
+
+
 }

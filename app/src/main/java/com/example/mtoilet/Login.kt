@@ -8,6 +8,7 @@ import android.widget.EditText
 import android.widget.TextView
 import com.example.core.entities.LoggedUser
 import com.example.core.entities.User
+import com.example.database.actions.DatabaseRepository
 import com.example.repository.Repository
 
 class Login : AppCompatActivity() {
@@ -32,9 +33,13 @@ class Login : AppCompatActivity() {
             var found = false
             val message : TextView = findViewById(R.id.login_message)
 
-            val listUsers : MutableList<User> = mutableListOf()
+            var listUsers : List<com.example.database.entities.User> = listOf()
+            /*
             listUsers.add(User(21, "novi", "nova", "Male"))
             listUsers.add(User(23, "novi2", "nova2", "Male"))
+             */
+            val databaseRepository = DatabaseRepository()
+            listUsers = databaseRepository.readUsers(this)
 
             if (!repository.checkInternetConnection(this)){
                 message.text = "Please check your internet connection!"

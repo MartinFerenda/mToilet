@@ -6,15 +6,17 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.RadioButton
 import android.widget.RadioGroup
-import android.widget.Toast
+import android.widget.TextView
 import com.example.core.entities.LoggedUser
 import com.example.core.entities.User
+import com.example.repository.Repository
 
 class MyProfile : AppCompatActivity() {
-    lateinit var usernameText : EditText
-    lateinit var passwordText : EditText
-    lateinit var genderRadio : RadioGroup
-    lateinit var saveChangedData : Button
+    private lateinit var usernameText : EditText
+    private lateinit var passwordText : EditText
+    private lateinit var genderRadio : RadioGroup
+    private lateinit var myProfileErrorMessage : TextView
+    private lateinit var saveChangedData : Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,6 +25,7 @@ class MyProfile : AppCompatActivity() {
         usernameText = findViewById(R.id.username)
         passwordText = findViewById(R.id.password)
         genderRadio = findViewById(R.id.gender_radio_group)
+        myProfileErrorMessage = findViewById(R.id.my_profile_message)
         saveChangedData = findViewById(R.id.createMyAccount)
 
         usernameText.setText(LoggedUser.username)
@@ -37,15 +40,27 @@ class MyProfile : AppCompatActivity() {
 
         saveChangedData.setOnClickListener {
             val checkedButtonId: Int = genderRadio.checkedRadioButtonId
-            var gender : String = ""
-            if(checkedButtonId != -1){                  //checkPasswords() && checkUsername()!!!
+            var gender = ""
+            if(checkedButtonId != -1){
                 val choice: RadioButton = findViewById(checkedButtonId)
                 gender = choice.text.toString()
             }
-            var userUpdated = User(LoggedUser.id, usernameText.text.toString(), passwordText.text.toString(), gender)
-            //Toast(this)
-            //updateaj ga!!! pozvati funkciju!!
-            //finish()
+            val repository = Repository()
+            if (repository.checkUsername() == "") {
+                val userUpdated = User(
+                    LoggedUser.id,
+                    usernameText.text.toString(),
+                    passwordText.text.toString(),
+                    gender
+                )
+                repository.updateUserData(userUpdated)
+                LoggedUser.username = usernameText.text.toString()
+                LoggedUser.password = passwordText.text.toString()
+                LoggedUser.gender = gender
+                finish()
+            }else{
+                myProfileErrorMessage.text = "Username is already taken! Please choose different username!"
+            }
         }
     }
 }
