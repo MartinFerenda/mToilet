@@ -4,6 +4,7 @@ import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.util.Log
+import com.example.core.entities.Event
 import com.example.core.entities.LoggedUser
 import com.example.core.entities.User
 import com.example.webservice.mToiletWebServiceAPICaller
@@ -23,6 +24,18 @@ class Repository {
     fun updateUserData(user : User){
         val mToiletWebServiceAPICaller = mToiletWebServiceAPICaller()
         mToiletWebServiceAPICaller.updateUserData(LoggedUser.id, user)
+    }
+    fun postNewEvent(event: Event){
+        val mToiletWebServiceAPICaller = mToiletWebServiceAPICaller()
+        mToiletWebServiceAPICaller.postNewEvent(event)
+    }
+    fun getCheckPay(id : String){
+        val mToiletWebServiceAPICaller = mToiletWebServiceAPICaller()
+        mToiletWebServiceAPICaller.getCheckPay(id)
+    }
+    fun getUrl(id : Int){
+        val mToiletWebServiceAPICaller = mToiletWebServiceAPICaller()
+        mToiletWebServiceAPICaller.getUrl(id)
     }
     fun checkInternetConnection(context: Context) : Boolean{
         val connectivityManager =

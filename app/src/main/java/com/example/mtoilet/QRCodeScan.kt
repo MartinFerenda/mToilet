@@ -1,7 +1,9 @@
 package com.example.mtoilet
 
+import android.content.Intent
 import android.content.SharedPreferences
 import android.content.pm.PackageManager
+import android.opengl.Visibility
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -18,7 +20,15 @@ import com.budiyev.android.codescanner.CodeScanner
 import com.budiyev.android.codescanner.DecodeCallback
 import com.budiyev.android.codescanner.ErrorCallback
 import com.budiyev.android.codescanner.ScanMode
+import com.example.core.entities.Event
+import com.example.core.entities.LoggedUser
+import com.example.core.entities.PaymentInfo
+import com.example.core.entities.PaymentUrl
 import com.example.mtoilet.databinding.ActivityQrcodeScanBinding
+import com.example.repository.Repository
+import java.net.URL
+import java.time.ZoneId
+import java.time.ZonedDateTime
 
 private const val CAMERA_REQUEST_CODE = 101
 private const val INTERNET_REQUEST_CODE = 102
@@ -38,6 +48,14 @@ class QRCodeScan : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        /*
+        val zagrebZone = ZoneId.of("Europe/Zagreb")
+        val zagrebCurrentDateTime = ZonedDateTime.now(zagrebZone)
+        val event = Event(0, zagrebCurrentDateTime, LoggedUser.id, 3)
+        val repository = Repository()
+        repository.postNewEvent(event)
+         */
+
         binding = ActivityQrcodeScanBinding.inflate(LayoutInflater.from(this))
         setContentView(binding.root)
 
@@ -45,6 +63,8 @@ class QRCodeScan : AppCompatActivity() {
 
         val sharedPref = getSharedPreferences("myPref", MODE_PRIVATE)
         prefs = sharedPref
+
+        binding.btnPay.visibility = View.INVISIBLE
 
         setupPermissions()
         codeScanner()
@@ -65,6 +85,9 @@ class QRCodeScan : AppCompatActivity() {
                 runOnUiThread {
                     deviceId = it.text.toInt()
                     binding.tvTextView.text = it.text
+                    binding.btnPay.visibility = View.VISIBLE
+                    val repository = Repository()
+                    repository.getUrl(deviceId)
                 }
             }
 
@@ -126,10 +149,10 @@ class QRCodeScan : AppCompatActivity() {
         }
     }
     fun getPaymentUri(view: View) {
+
         paymentInitiated = true
         webView.webViewClient = WebViewClient()
-        //TODO: API call za url sa /api/pay/deviceId koji se dobije iz QR koda, spremljen u device id
-        webView.loadUrl("https://sandbox-business.revolut.com/payment-link/kwaEeMmJLw8dlT-izHxAww")
+        webView.loadUrl(PaymentInfo.paymentUri)
         webView.settings.javaScriptEnabled = true
         webView.settings.setSupportZoom(true)
         binding.linLayout.visibility = View.INVISIBLE
@@ -147,14 +170,41 @@ class QRCodeScan : AppCompatActivity() {
                             binding.webView.visibility = View.INVISIBLE
                             binding.tvTextView2.text = html
                             binding.linLayout.visibility = View.VISIBLE
-                            //TODO: API call za provjeru placanja na api/checkpay/orderId
+
+                            val repository = Repository()
+                            repository.getCheckPay(html!!)
                             //TODO: ako je placeno API call za otvaranje vrata
+                            /*
+                            if(PaymentInfo.paymentStatus == 2){
+                                val zagrebZone = ZoneId.of("Europe/Zagreb")
+                                val zagrebCurrentDateTime = ZonedDateTime.now(zagrebZone)
+                                val event = Event(0, zagrebCurrentDateTime, LoggedUser.id, deviceId)
+                                repository.postNewEvent(event)
+                                //aktivnost uspjesno
+                                val intent = Intent(this@QRCodeScan, Success::class.java)
+                                startActivity(intent)
+                                //finish()
+                            }
+
+                             */
+                            val zagrebZone = ZoneId.of("Europe/Zagreb")
+                            val zagrebCurrentDateTime = ZonedDateTime.now(zagrebZone)
+                            val event = Event(0, zagrebCurrentDateTime, LoggedUser.id, deviceId)
+                            repository.postNewEvent(event)
+                            //aktivnost uspjesno
+                            val intent = Intent(this@QRCodeScan, Success::class.java)
+                            startActivity(intent)
+                            //finish()
                         }
                         else
                         {
                             binding.webView.visibility = View.INVISIBLE
                             binding.linLayout.visibility = View.VISIBLE
                             Toast.makeText(this@QRCodeScan, "Payment error, please try again!", Toast.LENGTH_SHORT).show()
+                            //aktivnost neuspjesno
+                            val intent = Intent(this@QRCodeScan, Error::class.java)
+                            startActivity(intent)
+                            //finish()
                         }
                     }
                 })

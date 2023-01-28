@@ -1,7 +1,9 @@
 package com.example.webservice
 
+import com.example.core.entities.Event
+import com.example.core.entities.PaymentInfo
+import com.example.core.entities.PaymentUrl
 import com.example.core.entities.User
-import com.example.webservice.responses.UsersResponse
 import retrofit2.http.Body
 import retrofit2.http.POST
 import retrofit2.Call
@@ -19,4 +21,13 @@ interface mToiletWebServiceAPI {
 
     @PUT("users/{id}")
     fun updateUserData(@Path("id") id : Int, @Body user : User?) : Call<User?>?
+
+    @POST("events")
+    fun postNewEvent(@Body event : Event?) : Call<Event?>?
+
+    @POST("checkpay/{id}")
+    fun getCheckPay(@Path("id") id : String) : Call<Int?>?
+
+    @POST("pay/{id}")
+    fun getUrl(@Path("id") id : Int) : Call<String?>?
 }
