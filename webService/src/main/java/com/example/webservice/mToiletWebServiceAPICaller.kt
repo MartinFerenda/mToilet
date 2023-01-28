@@ -1,7 +1,6 @@
 package com.example.webservice
 
 import android.content.Context
-import androidx.core.provider.FontsContractCompat
 import com.example.core.entities.LoggedUser
 import com.example.core.entities.User
 import com.example.database.actions.DatabaseRepository

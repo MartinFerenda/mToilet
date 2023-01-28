@@ -6,4 +6,5 @@ object LoggedUser {
     var password : String = ""
     var gender : String = ""
     var foundInDatabase : Boolean = false
+    var allUsers : MutableList<User> = mutableListOf()
 }

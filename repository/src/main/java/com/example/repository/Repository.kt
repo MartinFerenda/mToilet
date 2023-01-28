@@ -45,18 +45,4 @@ class Repository {
         }
         return false
     }
-    fun checkUsername() : String{
-        /*
-        val repository = Repository()
-        repository.getAllUsers(userName.text.toString(), this)
-        */
-        //za registraciju i my profile treba!!!
-
-        if(LoggedUser.foundInDatabase) {
-            return "Username is already taken! Please choose different username!"
-        }
-        return ""
-    }
-
-
 }

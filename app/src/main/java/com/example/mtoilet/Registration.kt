@@ -37,8 +37,10 @@ class Registration : AppCompatActivity() {
 
         var message = ""
 
+        val repository = Repository()
+        repository.getAllUsers(userName.text.toString(), this)
+
         btnRegister.setOnClickListener {
-            val repository = Repository()
             val checkedButtonId: Int = radioGroup.checkedRadioButtonId
 
             if (!repository.checkInternetConnection(this)){
@@ -54,7 +56,7 @@ class Registration : AppCompatActivity() {
                     if (message != ""){
                         tVMessage.text = message
                     }else{
-                        message = checkUsername()
+                        message = checkUsername(userName.text.toString())
                         if (message != ""){
                             tVMessage.text = message
                         }else{
@@ -79,6 +81,7 @@ class Registration : AppCompatActivity() {
         btnAlreadyHaveAccount.setOnClickListener{
             val intent2 = Intent(this, Login::class.java)
             startActivity(intent2)
+            finish()
         }
     }
     private fun checkPasswords() : String{
@@ -88,12 +91,11 @@ class Registration : AppCompatActivity() {
             ""
         }
     }
-    private fun checkUsername() : String{
-        val repository = Repository()
-        repository.getAllUsers(userName.text.toString(), this)
-
-        if(LoggedUser.foundInDatabase) {
-            return "Username is already taken! Please choose different username!"
+    private fun checkUsername(newUsername : String) : String{
+        for (u in LoggedUser.allUsers) {
+            if (u.username == newUsername) {
+                return "Username is already taken! Please choose different username!"
+            }
         }
         return ""
     }

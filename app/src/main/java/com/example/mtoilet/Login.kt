@@ -7,8 +7,6 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import com.example.core.entities.LoggedUser
-import com.example.core.entities.User
-import com.example.database.actions.DatabaseRepository
 import com.example.repository.Repository
 
 class Login : AppCompatActivity() {
@@ -21,30 +19,23 @@ class Login : AppCompatActivity() {
         val password: EditText = findViewById(R.id.password)
 
         val loginButton = findViewById<Button>(R.id.login_button)
+        val registerButton = findViewById<Button>(R.id.login_button_register)
+
+        val repository = Repository()
+        repository.getAllUsers(username.text.toString(), this)
+
         loginButton.setOnClickListener {
 
             //val intent = Intent(this, Home::class.java)
             //startActivity(intent)
 
-            val repository = Repository()
-            repository.getAllUsers(username.text.toString(), this)
-
-
             var found = false
             val message : TextView = findViewById(R.id.login_message)
-
-            var listUsers : List<com.example.database.entities.User> = listOf()
-            /*
-            listUsers.add(User(21, "novi", "nova", "Male"))
-            listUsers.add(User(23, "novi2", "nova2", "Male"))
-             */
-            val databaseRepository = DatabaseRepository()
-            listUsers = databaseRepository.readUsers(this)
 
             if (!repository.checkInternetConnection(this)){
                 message.text = "Please check your internet connection!"
             }else {
-                for (u in listUsers) {
+                for (u in LoggedUser.allUsers) {
                     if (u.username == username.text.toString() && u.password == password.text.toString()) {
                         found = true
                         message.text = ""
@@ -56,12 +47,20 @@ class Login : AppCompatActivity() {
 
                         val intent = Intent(this, Home2::class.java)
                         startActivity(intent)
+                        finish()
+                        break
                     }
                 }
-                if (!found){
+                if (!found) {
                     message.text = "Wrong username or password!"
                 }
             }
         }
+        registerButton.setOnClickListener{
+            val intent = Intent(this, Registration::class.java)
+            startActivity(intent)
+            finish()
+        }
+
     }
 }

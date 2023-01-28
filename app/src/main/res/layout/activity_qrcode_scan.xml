@@ -19,38 +19,63 @@
         android:layout_marginEnd="50dp"
         android:layout_marginTop="50dp"/>
 
-    <com.budiyev.android.codescanner.CodeScannerView
+    <WebView
         android:layout_width="match_parent"
-        android:layout_height="300dp"
-        android:id="@+id/scanner_view"
-        app:autoFocusButtonColor="@android:color/white"
-        app:autoFocusButtonVisible="true"
-        app:flashButtonColor="@android:color/white"
-        app:flashButtonVisible="true"
-        android:layout_marginEnd="50dp"
-        android:layout_marginStart="50dp"
+        android:layout_height="match_parent"
+        android:visibility="invisible"
+        android:id="@+id/webView"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
         android:layout_below="@id/qr_code_scan_heading"
-        android:layout_marginTop="50dp"
-        app:maskColor="#6C000000"/>
+        android:id="@+id/linLayout">
 
-    <TextView
-        android:id="@+id/tv_textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/scanner_view"
-        android:layout_centerHorizontal="true"
-        android:layout_margin="20dp"
-        android:text="Scan code..."
-        android:textColor="@android:color/black"/>
+        <com.budiyev.android.codescanner.CodeScannerView
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:id="@+id/scanner_view"
+            app:autoFocusButtonColor="@android:color/white"
+            app:autoFocusButtonVisible="true"
+            app:flashButtonColor="@android:color/white"
+            app:flashButtonVisible="true"
+            android:layout_marginEnd="50dp"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="50dp"
+            app:maskColor="#6C000000">
+        </com.budiyev.android.codescanner.CodeScannerView>
 
-    <Button
-        android:background="@drawable/round_style"
-        android:id="@+id/btn_pay"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/tv_textView"
-        android:layout_centerHorizontal="true"
-        android:onClick="getPayment"
-        android:text="Pay" />
+
+        <TextView
+            android:id="@+id/tv_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:layout_gravity="center"
+            android:text="@string/scan_code_qr_description"
+            android:textColor="@android:color/black"/>
+
+        <Button
+            android:background="@drawable/round_style"
+            android:id="@+id/btn_pay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="getPaymentUri"
+            android:layout_gravity="center"
+            android:text="@string/pay_btn_qr_scan" />
+
+        <TextView
+            android:id="@+id/tv_textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
+            android:text="Scan dse..."
+            android:textColor="@android:color/black" />
+
+    </LinearLayout>
 
 </RelativeLayout>

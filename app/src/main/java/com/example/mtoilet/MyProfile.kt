@@ -38,6 +38,9 @@ class MyProfile : AppCompatActivity() {
             femaleButton.isChecked = true
         }
 
+        val repository = Repository()
+        repository.getAllUsers(usernameText.text.toString(), this)
+
         saveChangedData.setOnClickListener {
             val checkedButtonId: Int = genderRadio.checkedRadioButtonId
             var gender = ""
@@ -45,8 +48,7 @@ class MyProfile : AppCompatActivity() {
                 val choice: RadioButton = findViewById(checkedButtonId)
                 gender = choice.text.toString()
             }
-            val repository = Repository()
-            if (repository.checkUsername() == "") {
+            if (checkUsername(usernameText.text.toString()) == "") {
                 val userUpdated = User(
                     LoggedUser.id,
                     usernameText.text.toString(),
@@ -62,5 +64,13 @@ class MyProfile : AppCompatActivity() {
                 myProfileErrorMessage.text = "Username is already taken! Please choose different username!"
             }
         }
+    }
+    private fun checkUsername(newUsername : String) : String{
+        for (u in LoggedUser.allUsers) {
+            if (u.username == newUsername && u.id != LoggedUser.id) {
+                return "Username is already taken! Please choose different username!"
+            }
+        }
+        return ""
     }
 }

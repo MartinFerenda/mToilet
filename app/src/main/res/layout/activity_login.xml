@@ -59,27 +59,45 @@
         android:gravity="center"
         android:padding="15dp"/>
 
-    <Button
-        android:background="@drawable/round_style"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/login_button"
-        android:layout_below="@+id/password"
-        android:layout_margin="50dp"
-        android:radius="50dp"
-        android:text="@string/log_in_button"/>
-
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/login_message"
         android:text=""
-        android:layout_below="@id/login_button"
+        android:layout_below="@id/password"
         android:gravity="center"
         android:layout_marginStart="50dp"
         android:layout_marginEnd="50dp"
+        android:layout_marginTop="10dp"
         android:textColor="#FF0000"
         android:textSize="15sp"
         android:textStyle="bold"/>
+
+    <Button
+        android:background="@drawable/round_style"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/login_button"
+        android:layout_below="@+id/login_message"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="20dp"
+        android:radius="50dp"
+        android:text="@string/log_in_button"/>
+
+    <Button
+        android:id="@+id/login_button_register"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/login_button"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/round_style"
+        android:radius="50dp"
+        android:text="@string/register_login_btn" />
+
+
 
 </RelativeLayout>

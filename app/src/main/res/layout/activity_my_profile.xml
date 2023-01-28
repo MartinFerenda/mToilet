@@ -85,6 +85,8 @@
         android:textColor="#FF0000"
         android:gravity="center"
         android:layout_below="@id/gender_radio_group"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
         android:layout_marginTop="10dp"/>
 
     <Button
