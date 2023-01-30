@@ -3,7 +3,6 @@ package com.example.mtoilet
 import android.content.Intent
 import android.content.SharedPreferences
 import android.content.pm.PackageManager
-import android.opengl.Visibility
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -23,10 +22,8 @@ import com.budiyev.android.codescanner.ScanMode
 import com.example.core.entities.Event
 import com.example.core.entities.LoggedUser
 import com.example.core.entities.PaymentInfo
-import com.example.core.entities.PaymentUrl
 import com.example.mtoilet.databinding.ActivityQrcodeScanBinding
 import com.example.repository.Repository
-import java.net.URL
 import java.time.ZoneId
 import java.time.ZonedDateTime
 
@@ -47,14 +44,6 @@ class QRCodeScan : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        /*
-        val zagrebZone = ZoneId.of("Europe/Zagreb")
-        val zagrebCurrentDateTime = ZonedDateTime.now(zagrebZone)
-        val event = Event(0, zagrebCurrentDateTime, LoggedUser.id, 3)
-        val repository = Repository()
-        repository.postNewEvent(event)
-         */
 
         binding = ActivityQrcodeScanBinding.inflate(LayoutInflater.from(this))
         setContentView(binding.root)
@@ -171,9 +160,12 @@ class QRCodeScan : AppCompatActivity() {
                             binding.tvTextView2.text = html
                             binding.linLayout.visibility = View.VISIBLE
 
+                            orderId = html!!
+
+                            val newOrder : String = orderId.removeSurrounding("\"")
                             val repository = Repository()
-                            repository.getCheckPay(html!!)
-                            //TODO: ako je placeno API call za otvaranje vrata
+                            repository.getCheckPay(newOrder)
+
                             /*
                             if(PaymentInfo.paymentStatus == 2){
                                 val zagrebZone = ZoneId.of("Europe/Zagreb")
@@ -187,6 +179,7 @@ class QRCodeScan : AppCompatActivity() {
                             }
 
                              */
+                            //ovo sve gore u if blok!!!
                             val zagrebZone = ZoneId.of("Europe/Zagreb")
                             val zagrebCurrentDateTime = ZonedDateTime.now(zagrebZone)
                             val event = Event(0, zagrebCurrentDateTime, LoggedUser.id, deviceId)

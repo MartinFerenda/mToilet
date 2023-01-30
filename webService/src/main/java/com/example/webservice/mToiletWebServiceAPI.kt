@@ -1,8 +1,6 @@
 package com.example.webservice
 
 import com.example.core.entities.Event
-import com.example.core.entities.PaymentInfo
-import com.example.core.entities.PaymentUrl
 import com.example.core.entities.User
 import retrofit2.http.Body
 import retrofit2.http.POST

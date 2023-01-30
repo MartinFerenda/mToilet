@@ -19,24 +19,8 @@
         android:theme="@style/Theme.MToilet"
         tools:targetApi="31">
         <activity
-            android:name=".ResetPassword"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
             android:name=".MyProfile"
             android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
-            android:name=".Home"
-            android:exported="false"
-            android:label="@string/title_activity_home"
-            android:theme="@style/Theme.MToilet.NoActionBar">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -57,13 +41,6 @@
         </activity>
         <activity
             android:name=".Success"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
-            android:name=".CreditCardInfo"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"

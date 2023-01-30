@@ -14,7 +14,6 @@ class mToiletWebServiceAPICaller {
 
     private var retrofit : Retrofit
     private lateinit var retrofit2 : Retrofit
-    lateinit var allUsers: MutableList<User>
     private val baseUrl : String = "https://air2221.mobilisis.hr/api/api/"
 
     init {
@@ -40,8 +39,6 @@ class mToiletWebServiceAPICaller {
     fun getAllUsers(context: Context, username : String){
         val serviceAPI = retrofit.create(mToiletWebServiceAPI::class.java)
         val call : Call<List<User>> = serviceAPI.getAllUsers()
-        var usersResponse : MutableList<User> = mutableListOf()
-        this.allUsers = mutableListOf()
 
         LoggedUser.foundInDatabase = false
         call.enqueue(object : Callback<List<User>>{
@@ -61,8 +58,6 @@ class mToiletWebServiceAPICaller {
 
             }
         })
-
-        this.allUsers = usersResponse
     }
     fun updateUserData(id : Int, user : User){
         val serviceAPI = retrofit.create(mToiletWebServiceAPI::class.java)

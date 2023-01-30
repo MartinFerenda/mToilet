@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background"
     tools:context=".QRCodeScan">
 
     <TextView
@@ -12,7 +13,7 @@
         android:id="@+id/qr_code_scan_heading"
         android:text="@string/qr_code_scan_heading"
         android:textSize="35sp"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:textStyle="bold"
         android:gravity="center"
         android:layout_marginStart="50dp"
@@ -54,7 +55,7 @@
             android:layout_margin="20dp"
             android:layout_gravity="center"
             android:text="@string/scan_code_qr_description"
-            android:textColor="@android:color/black"/>
+            android:textColor="@android:color/white"/>
 
         <Button
             android:background="@drawable/round_style"
@@ -73,8 +74,8 @@
             android:layout_marginTop="20dp"
             android:layout_marginEnd="20dp"
             android:layout_marginBottom="20dp"
-            android:text="Scan dse..."
-            android:textColor="@android:color/black" />
+            android:text="@string/order_id_info"
+            android:textColor="@android:color/white" />
 
     </LinearLayout>
 

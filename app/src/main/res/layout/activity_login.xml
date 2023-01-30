@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background"
     tools:context=".Login">
 
     <TextView
@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/login"
         android:text="@string/log_in"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:textSize="35sp"
         android:textStyle="bold"
         android:layout_margin="50dp"
@@ -22,7 +22,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/mainText_login"
         android:text="@string/login_main_text"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:textStyle="bold"
         android:textSize="25sp"
         android:layout_marginTop="180dp"
@@ -43,7 +43,11 @@
         android:layout_marginRight="30dp"
         android:hint="@string/username_login"
         android:gravity="center"
-        android:padding="15dp"/>
+        android:padding="15dp"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        android:shadowColor="@color/white"
+        android:backgroundTint="@color/white"/>
 
     <EditText
         android:layout_width="match_parent"
@@ -57,7 +61,11 @@
         android:layout_marginRight="30dp"
         android:hint="@string/password_login"
         android:gravity="center"
-        android:padding="15dp"/>
+        android:padding="15dp"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        android:shadowColor="@color/white"
+        android:backgroundTint="@color/white"/>
 
     <TextView
         android:layout_width="match_parent"

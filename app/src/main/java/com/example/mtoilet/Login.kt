@@ -25,10 +25,6 @@ class Login : AppCompatActivity() {
         repository.getAllUsers(username.text.toString(), this)
 
         loginButton.setOnClickListener {
-
-            //val intent = Intent(this, Home::class.java)
-            //startActivity(intent)
-
             var found = false
             val message : TextView = findViewById(R.id.login_message)
 

@@ -67,5 +67,9 @@
     <string name="scan_code_qr_description">Scan code...</string>
     <string name="pay_btn_qr_scan">Pay</string>
     <string name="register_login_btn">Register</string>
+    <string name="error_heading">Error occurred during transaction!</string>
+    <string name="error_main_text">Please check your credit card balance and your network connection and try again.</string>
+    <string name="order_id_info">Scan dse...</string>
+    <string name="payment_successful_heading">Payment successful!</string>
 
 </resources>
