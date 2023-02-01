@@ -7,7 +7,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import com.example.core.entities.LoggedUser
-import com.example.repository.Repository
+import com.example.mtoilet.data.Repository
 
 class Login : AppCompatActivity() {
 

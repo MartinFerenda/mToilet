@@ -34,7 +34,7 @@
         android:textColor="@color/white"
         android:textColorHint="@color/white"
         android:shadowColor="@color/white"
-        android:backgroundTint="@color/white"/>
+        android:backgroundTint="@color/gold_yellow"/>
 
     <EditText
         android:layout_width="match_parent"
@@ -52,7 +52,7 @@
         android:textColor="@color/white"
         android:textColorHint="@color/white"
         android:shadowColor="@color/white"
-        android:backgroundTint="@color/white"/>
+        android:backgroundTint="@color/gold_yellow"/>
 
     <TextView
         android:layout_width="match_parent"

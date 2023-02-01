@@ -9,7 +9,7 @@ import android.widget.RadioGroup
 import android.widget.TextView
 import com.example.core.entities.LoggedUser
 import com.example.core.entities.User
-import com.example.repository.Repository
+import com.example.mtoilet.data.Repository
 
 class MyProfile : AppCompatActivity() {
     private lateinit var usernameText : EditText

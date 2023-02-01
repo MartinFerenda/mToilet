@@ -28,13 +28,13 @@ class Repository {
         val mToiletWebServiceAPICaller = mToiletWebServiceAPICaller()
         mToiletWebServiceAPICaller.postNewEvent(event)
     }
-    fun getCheckPay(id : String){
+    fun getCheckPay(id : String) : Boolean{
         val mToiletWebServiceAPICaller = mToiletWebServiceAPICaller()
-        mToiletWebServiceAPICaller.getCheckPay(id)
+        return mToiletWebServiceAPICaller.getCheckPay(id)
     }
-    fun getUrl(id : Int){
+    fun getUrl(id: Int): Boolean {
         val mToiletWebServiceAPICaller = mToiletWebServiceAPICaller()
-        mToiletWebServiceAPICaller.getUrl(id)
+        return mToiletWebServiceAPICaller.getUrl(id)
     }
     fun checkInternetConnection(context: Context) : Boolean{
         val connectivityManager =

@@ -86,7 +86,7 @@ class mToiletWebServiceAPICaller {
             }
         })
     }
-    fun getCheckPay(id : String){
+    fun getCheckPay(id : String) : Boolean{
         retrofit2 = Retrofit.Builder()
             .baseUrl(baseUrl)
             .addConverterFactory(ScalarsConverterFactory.create())
@@ -106,8 +106,9 @@ class mToiletWebServiceAPICaller {
 
             }
         })
+        return true
     }
-    fun getUrl(id: Int){
+    fun getUrl(id: Int) : Boolean{
         retrofit2 = Retrofit.Builder()
             .baseUrl(baseUrl)
             .addConverterFactory(ScalarsConverterFactory.create())
@@ -127,5 +128,6 @@ class mToiletWebServiceAPICaller {
 
             }
         })
+        return true
     }
 }

@@ -8,63 +8,70 @@
     tools:context=".QRCodeScan">
 
     <TextView
+        android:id="@+id/qr_code_scan_heading"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/qr_code_scan_heading"
-        android:text="@string/qr_code_scan_heading"
-        android:textSize="35sp"
-        android:textColor="@color/white"
-        android:textStyle="bold"
-        android:gravity="center"
         android:layout_marginStart="50dp"
+        android:layout_marginTop="50dp"
         android:layout_marginEnd="50dp"
-        android:layout_marginTop="50dp"/>
+        android:gravity="center"
+        android:text="@string/qr_code_scan_heading"
+        android:textColor="@color/white"
+        android:textSize="35sp"
+        android:textStyle="bold" />
 
     <WebView
+        android:id="@+id/webView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="invisible"
-        android:id="@+id/webView"/>
+        android:visibility="invisible" />
 
     <LinearLayout
+        android:id="@+id/linLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
         android:layout_below="@id/qr_code_scan_heading"
-        android:id="@+id/linLayout">
+        android:orientation="vertical">
 
         <com.budiyev.android.codescanner.CodeScannerView
+            android:id="@+id/scanner_view"
             android:layout_width="match_parent"
             android:layout_height="300dp"
-            android:id="@+id/scanner_view"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginEnd="50dp"
             app:autoFocusButtonColor="@android:color/white"
             app:autoFocusButtonVisible="true"
             app:flashButtonColor="@android:color/white"
             app:flashButtonVisible="true"
-            android:layout_marginEnd="50dp"
-            android:layout_marginStart="50dp"
-            android:layout_marginTop="50dp"
-            app:maskColor="#6C000000">
-        </com.budiyev.android.codescanner.CodeScannerView>
+            app:maskColor="#6C000000"></com.budiyev.android.codescanner.CodeScannerView>
 
 
         <TextView
             android:id="@+id/tv_textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp"
             android:layout_gravity="center"
+            android:layout_margin="20dp"
             android:text="@string/scan_code_qr_description"
-            android:textColor="@android:color/white"/>
+            android:textColor="@android:color/white" />
 
         <Button
-            android:background="@drawable/round_style"
             android:id="@+id/btn_pay"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="getPaymentUri"
             android:layout_gravity="center"
+            android:background="@drawable/round_style"
+            android:onClick="getPaymentUri"
             android:text="@string/pay_btn_qr_scan" />
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/qr_scan_progress_bar"
+            android:layout_gravity="center"
+            android:backgroundTint="@color/white"
+            android:foregroundTint="@color/white" />
 
         <TextView
             android:id="@+id/tv_textView2"
@@ -75,7 +82,8 @@
             android:layout_marginEnd="20dp"
             android:layout_marginBottom="20dp"
             android:text="@string/order_id_info"
-            android:textColor="@android:color/white" />
+            android:textColor="@android:color/white"
+            android:visibility="gone"/>
 
     </LinearLayout>
 

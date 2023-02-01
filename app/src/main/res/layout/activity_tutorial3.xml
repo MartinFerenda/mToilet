@@ -17,6 +17,16 @@
         android:layout_margin="50dp"
         android:gravity="center"/>
 
+    <ImageView
+        android:id="@+id/toilet_icon"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_below="@id/headerTutorial3"
+        android:layout_marginTop="60dp"
+        android:background="@drawable/wallet_icon"
+        android:layout_centerHorizontal="true"/>
+
+
     <TextView
         android:id="@+id/descriptionTutorial3"
         android:layout_width="match_parent"
