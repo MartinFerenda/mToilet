@@ -78,10 +78,10 @@ class QRCodeScan : AppCompatActivity() {
             decodeCallback = DecodeCallback{
                 runOnUiThread {
                     deviceId = it.text.toInt()
-                    binding.tvTextView.text = it.text
+                    binding.tvTextView.visibility = View.INVISIBLE
                     binding.qrScanProgressBar.visibility = View.VISIBLE
                     viewModel.initializeValue()
-                    viewModel.getUrl(deviceId)
+                    viewModel.getUrl(deviceId, this@QRCodeScan)
                     viewModel.fetchedUrl().observe(this@QRCodeScan, Observer{
                         if(viewModel.fetchedUrl().value!!) {
                             binding.btnPay.visibility = View.VISIBLE
@@ -176,13 +176,13 @@ class QRCodeScan : AppCompatActivity() {
                             val repository = Repository()
 
                             val viewModel2 = ViewModelProvider(this@QRCodeScan).get(MToiletViewModel::class.java)
-                            viewModel2.getCheckPay(newOrder)
+                            viewModel2.getCheckPay(newOrder, this@QRCodeScan)
                             viewModel2.fetchedPaymentStatus().observe(this@QRCodeScan, Observer{
                                 if(viewModel2.fetchedPaymentStatus().value!!) {
                                     val zagrebZone = ZoneId.of("Europe/Zagreb")
                                     val zagrebCurrentDateTime = ZonedDateTime.now(zagrebZone)
                                     val event = Event(0, zagrebCurrentDateTime, LoggedUser.id, deviceId)
-                                    repository.postNewEvent(event)
+                                    repository.postNewEvent(event, this@QRCodeScan)
                                     val intent = Intent(this@QRCodeScan, Success::class.java)
                                     startActivity(intent)
                                     finish()

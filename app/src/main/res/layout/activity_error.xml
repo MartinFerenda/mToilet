@@ -14,9 +14,11 @@
         android:textStyle="bold"
         android:textSize="35sp"
         android:textColor="@color/white"
-        android:fontFamily="sans-serif"
+        android:fontFamily="@font/nunito_medium"
         android:gravity="center"
-        android:layout_margin="50dp"/>
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginTop="30dp"/>
 
     <ImageView
         android:id="@+id/error_icon"
@@ -35,6 +37,7 @@
         android:textStyle="bold"
         android:textSize="30sp"
         android:textColor="@color/white"
+        android:fontFamily="@font/nunito_medium"
         android:gravity="center"
         android:layout_marginStart="30dp"
         android:layout_marginEnd="30dp"

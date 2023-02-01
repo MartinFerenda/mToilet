@@ -4,6 +4,7 @@ import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.util.Log
+import android.widget.Toast
 import com.example.core.entities.Event
 import com.example.core.entities.LoggedUser
 import com.example.core.entities.User
@@ -14,27 +15,51 @@ class Repository {
         if (checkInternetConnection(context)){
             val caller = mToiletWebServiceAPICaller()
             caller.getAllUsers(context, username)
+        }else{
+            Toast.makeText(context, "No network connection!", Toast.LENGTH_SHORT).show()
         }
     }
-    fun postNewUser(user : User){
-        val mToiletWebServiceAPICaller = mToiletWebServiceAPICaller()
-        mToiletWebServiceAPICaller.postNewUser(user)
+    fun postNewUser(user : User, context : Context){
+        if (checkInternetConnection(context)) {
+            val mToiletWebServiceAPICaller = mToiletWebServiceAPICaller()
+            mToiletWebServiceAPICaller.postNewUser(user)
+        }else{
+            Toast.makeText(context, "No network connection!", Toast.LENGTH_SHORT).show()
+        }
     }
-    fun updateUserData(user : User){
-        val mToiletWebServiceAPICaller = mToiletWebServiceAPICaller()
-        mToiletWebServiceAPICaller.updateUserData(LoggedUser.id, user)
+    fun updateUserData(user : User, context: Context){
+        if (checkInternetConnection(context)) {
+            val mToiletWebServiceAPICaller = mToiletWebServiceAPICaller()
+            mToiletWebServiceAPICaller.updateUserData(LoggedUser.id, user)
+        }else{
+            Toast.makeText(context, "No network connection!", Toast.LENGTH_SHORT).show()
+        }
     }
-    fun postNewEvent(event: Event){
-        val mToiletWebServiceAPICaller = mToiletWebServiceAPICaller()
-        mToiletWebServiceAPICaller.postNewEvent(event)
+    fun postNewEvent(event: Event, context: Context){
+        if (checkInternetConnection(context)) {
+            val mToiletWebServiceAPICaller = mToiletWebServiceAPICaller()
+            mToiletWebServiceAPICaller.postNewEvent(event)
+        }else{
+            Toast.makeText(context, "No network connection!", Toast.LENGTH_SHORT).show()
+        }
     }
-    fun getCheckPay(id : String) : Boolean{
-        val mToiletWebServiceAPICaller = mToiletWebServiceAPICaller()
-        return mToiletWebServiceAPICaller.getCheckPay(id)
+    fun getCheckPay(id : String, context: Context) : Boolean{
+        if (checkInternetConnection(context)) {
+            val mToiletWebServiceAPICaller = mToiletWebServiceAPICaller()
+            return mToiletWebServiceAPICaller.getCheckPay(id)
+        }else{
+            Toast.makeText(context, "No network connection!", Toast.LENGTH_SHORT).show()
+            return false
+        }
     }
-    fun getUrl(id: Int): Boolean {
-        val mToiletWebServiceAPICaller = mToiletWebServiceAPICaller()
-        return mToiletWebServiceAPICaller.getUrl(id)
+    fun getUrl(id: Int, context: Context): Boolean {
+        if (checkInternetConnection(context)) {
+            val mToiletWebServiceAPICaller = mToiletWebServiceAPICaller()
+            return mToiletWebServiceAPICaller.getUrl(id)
+        }else{
+            Toast.makeText(context, "No network connection!", Toast.LENGTH_SHORT).show()
+            return false
+        }
     }
     fun checkInternetConnection(context: Context) : Boolean{
         val connectivityManager =

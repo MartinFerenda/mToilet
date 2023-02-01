@@ -14,6 +14,7 @@
         android:textColor="@color/white"
         android:textSize="35sp"
         android:textStyle="bold"
+        android:fontFamily="@font/nunito_medium"
         android:layout_marginStart="50dp"
         android:layout_marginEnd="50dp"
         android:layout_marginTop="30dp"
@@ -27,6 +28,7 @@
         android:textColor="@color/white"
         android:textStyle="bold"
         android:textSize="25sp"
+        android:fontFamily="@font/nunito_medium"
         android:layout_below="@+id/register"
         android:layout_marginTop="5dp"
         android:layout_marginLeft="30dp"
@@ -40,6 +42,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/username"
         android:inputType="text"
+        android:fontFamily="@font/nunito_medium"
         android:importantForAutofill="no"
         android:layout_below="@id/mainText"
         android:layout_marginTop="10dp"
@@ -58,6 +61,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/password"
         android:inputType="textPassword"
+        android:fontFamily="@font/nunito_medium"
         android:importantForAutofill="no"
         android:layout_below="@id/username"
         android:layout_marginTop="10dp"
@@ -76,6 +80,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/confirmPassword"
         android:inputType="textPassword"
+        android:fontFamily="@font/nunito_medium"
         android:importantForAutofill="no"
         android:layout_below="@id/password"
         android:layout_marginTop="10dp"
@@ -95,6 +100,7 @@
         android:id="@+id/gender_radio_group_heading"
         android:text="@string/gender_register"
         android:textColor="@color/white"
+        android:fontFamily="@font/nunito_medium"
         android:layout_below="@id/confirmPassword"
         android:textSize="20sp"
         android:gravity="center"
@@ -104,8 +110,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/gender_radio_group"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginEnd="30dp"
         android:layout_marginTop="10dp"
         android:layout_below="@+id/gender_radio_group_heading"
         android:orientation="horizontal">
@@ -118,6 +124,7 @@
             android:layout_weight="1"
             android:text="@string/male_register"
             android:textColor="@color/white"
+            android:fontFamily="@font/nunito_medium"
             android:buttonTint="@color/white"/>
         <RadioButton
             android:layout_width="wrap_content"
@@ -127,6 +134,7 @@
             android:layout_weight="1"
             android:text="@string/female_register"
             android:textColor="@color/white"
+            android:fontFamily="@font/nunito_medium"
             android:buttonTint="@color/white"/>
 
     </RadioGroup>
@@ -139,6 +147,7 @@
         android:textSize="15sp"
         android:textStyle="bold"
         android:textColor="#FF0000"
+        android:fontFamily="@font/nunito_medium"
         android:gravity="center"
         android:layout_below="@id/gender_radio_group"
         android:layout_marginStart="30dp"

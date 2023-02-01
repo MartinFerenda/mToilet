@@ -13,6 +13,7 @@
         android:text="@string/my_profile_heading"
         android:textSize="25sp"
         android:textStyle="bold"
+        android:fontFamily="@font/nunito_medium"
         android:gravity="center"
         android:layout_marginTop="50dp"
         android:layout_marginBottom="50dp"
@@ -23,6 +24,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/username"
         android:inputType="text"
+        android:fontFamily="@font/nunito_medium"
         android:importantForAutofill="no"
         android:layout_below="@id/my_profile_mainText"
         android:layout_marginTop="10dp"
@@ -41,6 +43,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/password"
         android:inputType="textPassword"
+        android:fontFamily="@font/nunito_medium"
         android:importantForAutofill="no"
         android:layout_below="@id/username"
         android:layout_marginTop="10dp"
@@ -61,6 +64,7 @@
         android:text="@string/gender_my_profile"
         android:textColor="@color/white"
         android:textSize="20sp"
+        android:fontFamily="@font/nunito_medium"
         android:gravity="center"
         android:layout_below="@id/password"
         android:layout_marginTop="20dp"/>
@@ -69,8 +73,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/gender_radio_group"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginEnd="30dp"
         android:layout_marginTop="30dp"
         android:layout_below="@+id/gender_radio_group_heading"
         android:orientation="horizontal"
@@ -83,6 +87,7 @@
             android:layout_weight="1"
             android:text="@string/male_my_profile"
             android:textColor="@color/white"
+            android:fontFamily="@font/nunito_medium"
             android:buttonTint="@color/white"/>
         <RadioButton
             android:layout_width="wrap_content"
@@ -92,6 +97,7 @@
             android:layout_weight="1"
             android:text="@string/female_my_profile"
             android:textColor="@color/white"
+            android:fontFamily="@font/nunito_medium"
             android:buttonTint="@color/white"/>
 
     </RadioGroup>
@@ -104,6 +110,7 @@
         android:textSize="15sp"
         android:textStyle="bold"
         android:textColor="#FF0000"
+        android:fontFamily="@font/nunito_medium"
         android:gravity="center"
         android:layout_below="@id/gender_radio_group"
         android:layout_marginStart="30dp"

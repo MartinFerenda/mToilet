@@ -1,5 +1,6 @@
 package com.example.mtoilet.viewmodel
 
+import android.content.Context
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -19,12 +20,12 @@ class MToiletViewModel : ViewModel() {
         fetchedPaymentStatus.value = false
     }
 
-    fun getUrl(deviceId : Int){
+    fun getUrl(deviceId : Int, context: Context){
         val repository = Repository()
-        fetchedUrl.value = repository.getUrl(deviceId)
+        fetchedUrl.value = repository.getUrl(deviceId, context)
     }
-    fun getCheckPay(id : String){
+    fun getCheckPay(id : String, context: Context){
         val repository = Repository()
-        fetchedPaymentStatus.value = repository.getCheckPay(id)
+        fetchedPaymentStatus.value = repository.getCheckPay(id, context)
     }
 }

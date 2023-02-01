@@ -55,7 +55,7 @@ class MyProfile : AppCompatActivity() {
                     passwordText.text.toString(),
                     gender
                 )
-                repository.updateUserData(userUpdated)
+                repository.updateUserData(userUpdated, this)
                 LoggedUser.username = usernameText.text.toString()
                 LoggedUser.password = passwordText.text.toString()
                 LoggedUser.gender = gender

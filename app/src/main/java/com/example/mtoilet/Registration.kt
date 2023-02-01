@@ -68,7 +68,7 @@ class Registration : AppCompatActivity() {
                                 gender = choice.text.toString()
                                 val newUser =
                                     User(1, userName.text.toString(), password.text.toString(), gender)
-                                repository.postNewUser(newUser)
+                                repository.postNewUser(newUser, this)
 
                                 val intent = Intent(this, Home2::class.java)
                                 startActivity(intent)
